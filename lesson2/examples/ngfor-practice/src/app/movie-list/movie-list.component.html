@@ -1,7 +1,6 @@
-<div class='movies'>
-    <h3>Movies to Watch</h3>
-    <ol>
-        <li *ngFor = 'let movie of movies'>{{movie}}</li>
-    </ol>
+<div class="movies" *ngFor="let movie of movies">
+  <h3>Movies to Watch</h3>
+  <ol>
+    <li>{{ movie }}</li>
+  </ol>
 </div>
-
