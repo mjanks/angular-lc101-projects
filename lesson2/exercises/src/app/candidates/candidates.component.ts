@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./candidates.component.css']
 })
 export class CandidatesComponent implements OnInit {
-   missionName = "LaunchCode Moonshot"
+   missionName = "LaunchCode Moonshot";
+
+   selected; // This seems odd, I just declare the variable here and good to go??
 
    candidates = [
     {name: 'Rusty Rutabaga', data: {age: 5, mass: '0.75 kg', sidekick: 'Blake'}, image: 'assets/images/Blake.png'},
@@ -24,6 +26,11 @@ export class CandidatesComponent implements OnInit {
   }
 
   // Code the addToCrew function here:
+  addToCrew(candidate: object): void {
+    if (!this.crew.includes(candidate)) {
+      this.crew.push(candidate);
+    }
+  }
 
 
   // BONUS: Code the changeMissionName function here:
