@@ -13,8 +13,9 @@ export class AppComponent {
   width = 0;
   message = 'Space shuttle ready for takeoff!';
 
-  horizontalPosition = 0;
-  verticalPosition = 0;
+  horizontalPosition:number = 0;
+  verticalPosition: number = 0;
+  inFlight: boolean = false;
 
   handleTakeOff(rocketImage) {
    let result = window.confirm('Are you sure the shuttle is ready for takeoff?');
@@ -24,6 +25,7 @@ export class AppComponent {
       this.width = 0;
       this.message = 'Shuttle in flight.';
       this.moveRocket(rocketImage, 'up');
+      this.inFlight = true;
    }
   }
 
@@ -38,6 +40,7 @@ export class AppComponent {
       rocketImage.style.bottom = 0;
       this.horizontalPosition = 0;
       this.verticalPosition = 0;
+      this.inFlight = false;
    }
   }
 
@@ -52,6 +55,7 @@ export class AppComponent {
       rocketImage.style.bottom = 0;
       this.horizontalPosition = 0;
       this.verticalPosition = 0;
+      this.inFlight = false;
     }
   }
 
@@ -61,26 +65,48 @@ export class AppComponent {
         this.horizontalPosition += 10;
         rocketImage.style.left = this.horizontalPosition + 'px';
         this.width += 10000;
+        // console.log(this.horizontalPosition);
+        if (this.horizontalPosition === 210 || this.verticalPosition === 330 || this.verticalPosition === 0) {
+          this.color = 'orange';
+        } else {
+          this.color = 'green';
+        }
         break;
       case 'left':
         this.horizontalPosition -= 10;
         rocketImage.style.left = this.horizontalPosition + 'px';
         this.width -= 10000;
+        // console.log(this.horizontalPosition);
+        if (this.horizontalPosition === -190 || this.verticalPosition === 330 || this.verticalPosition === 0) {
+          this.color = 'orange';
+        } else {
+          this.color = 'green';
+        }
         break;
       case 'up':
         this.verticalPosition += 10;
         rocketImage.style.bottom = this.verticalPosition + 'px';
         this.height += 10000;
+        // console.log(this.verticalPosition);
+        if (this.verticalPosition === 330 || this.horizontalPosition === -190 || this.horizontalPosition === 210) {
+          this.color = 'orange';
+        } else {
+          this.color = 'green';
+        }
         break;
       case 'down':
         this.verticalPosition -= 10;
         rocketImage.style.bottom = this.verticalPosition + 'px';
         this.height -= 10000;
+        // console.log(this.verticalPosition);
+        if (this.verticalPosition === 0 || this.horizontalPosition === -190 || this.horizontalPosition === 210) {
+          this.color = 'orange';
+        } else {
+          this.color = 'green';
+        }
         break;
     }
   }
-
-
 
 }
 

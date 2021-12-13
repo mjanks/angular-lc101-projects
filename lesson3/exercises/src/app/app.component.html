@@ -30,18 +30,41 @@
 
     <div class="col-3">
       <div class="container-right">
-        <button (click)="moveRocket(rocketImage, 'up')">Up</button>
-        <button (click)="moveRocket(rocketImage, 'down')">Down</button>
-        <button (click)="moveRocket(rocketImage, 'right')">Right</button>
-        <button (click)="moveRocket(rocketImage, 'left')">Left</button>
+        <button (click)="moveRocket(rocketImage, 'up')" [disabled]="!inFlight">
+          Up
+        </button>
+        <button
+          (click)="moveRocket(rocketImage, 'down')"
+          [disabled]="!inFlight"
+        >
+          Down
+        </button>
+        <button
+          (click)="moveRocket(rocketImage, 'right')"
+          [disabled]="!inFlight"
+        >
+          Right
+        </button>
+        <button
+          (click)="moveRocket(rocketImage, 'left')"
+          [disabled]="!inFlight"
+        >
+          Left
+        </button>
         <h3>Space Shuttle Height</h3>
         <p>{{ height }} km</p>
       </div>
     </div>
   </div>
   <div class="container-control-buttons">
-    <button (click)="handleTakeOff(rocketImage)">Take Off</button>
-    <button (click)="handleLand(rocketImage)">Land</button>
-    <button (click)="handleAbort(rocketImage)">Abort Mission</button>
+    <button (click)="handleTakeOff(rocketImage)" [disabled]="inFlight">
+      Take Off
+    </button>
+    <button (click)="handleLand(rocketImage)" [disabled]="!inFlight">
+      Land
+    </button>
+    <button (click)="handleAbort(rocketImage)" [disabled]="!inFlight">
+      Abort Mission
+    </button>
   </div>
 </div>
